@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_db_explorer_browser,db.explorer.browser.user,model_db_explorer_browser,base.group_user,1,1,1,1
+access_db_explorer_query,db.explorer.query.user,model_db_explorer_query,base.group_user,1,1,1,1
+access_db_explorer_query_wizard,db.explorer.query.wizard.user,model_db_explorer_query_wizard,base.group_user,1,1,1,1
