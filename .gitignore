@@ -11,3 +11,9 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Local dev docs (symlinked from odooModulesDev)
+CLAUDE.md
+GEMINI.md
+AGENTS.md
+.claude/
