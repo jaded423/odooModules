@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="global_search_templates" xml:space="preserve">
+
+    <t t-name="global_search.GlobalSearch" owl="1">
+        <div class="global-search-systray">
+            <!-- Systray icon -->
+            <a
+                type="button"
+                class="o_systray_item global-search-toggle"
+                t-on-click="togglePanel"
+                title="Global Search"
+            >
+                <i class="fa fa-search"/>
+            </a>
+
+            <!-- Overlay & panel -->
+            <t t-if="state.open">
+                <div class="global-search-backdrop" t-on-click="closePanel"/>
+                <div class="global-search-panel">
+                    <div class="global-search-header">
+                        <input
+                            t-ref="input"
+                            class="global-search-input"
+                            type="text"
+                            placeholder="Search across Sales, Invoices, Contacts, Products..."
+                            t-on-input="onInput"
+                        />
+                    </div>
+
+                    <div class="global-search-body">
+                        <!-- 1) Loading -->
+                        <t t-if="state.loading">
+                            <div class="global-search-loading">
+                                Searching...
+                            </div>
+                        </t>
+
+                        <!-- 2) Results -->
+                        <t t-elif="state.results.length">
+                            <t t-foreach="state.results" t-as="r" t-key="r.key">
+                                <div
+                                    class="global-search-result"
+                                    t-on-click="onResultClick"
+                                    t-att-data-model="r.model"
+                                    t-att-data-id="r.id"
+                                >
+                                    <div class="result-main">
+                                        <span class="result-title">
+                                            <t t-esc="r.display_name"/>
+                                        </span>
+                                        <t t-if="r.subtitle">
+                                            <span class="result-subtitle">
+                                                <t t-esc="r.subtitle"/>
+                                            </span>
+                                        </t>
+                                    </div>
+                                    <div class="result-model">
+                                        <t t-esc="r.model_label"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+
+                        <!-- 3) No results but user typed something -->
+                        <t t-elif="state.query">
+                            <div class="global-search-empty">
+                                No results
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+
+</templates>
