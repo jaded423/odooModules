@@ -14,6 +14,4 @@ __pycache__/
 
 # Local dev docs (symlinked from odooModulesDev)
 CLAUDE.md
-GEMINI.md
-AGENTS.md
 .claude/
