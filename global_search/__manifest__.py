@@ -1,8 +1,8 @@
 {
-    "name": "Global Smart Search",
+    "name": "Global Search",
     "summary": "Google-style global search across multiple models from one search box.",
     "version": "17.0.1.0.0",
-    "author": "Adapted for Odoo 17",
+    "author": "jaded",
     "website": "",
     "category": "Tools",
     "license": "LGPL-3",
