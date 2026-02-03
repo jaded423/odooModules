@@ -80,7 +80,7 @@ class GlobalSearchController(http.Controller):
             subtitle_getter=lambda r: r.email or r.phone or "",
         )
 
-        # Products
+        # Products (Templates)
         add_results(
             "product.template",
             "Product",
@@ -90,6 +90,40 @@ class GlobalSearchController(http.Controller):
                 ("default_code", "ilike", q),
             ],
             subtitle_getter=lambda r: r.default_code,
+        )
+
+        # Product Variants
+        add_results(
+            "product.product",
+            "Product Variant",
+            [
+                "|",
+                "|",
+                ("name", "ilike", q),
+                ("default_code", "ilike", q),
+                ("barcode", "ilike", q),
+            ],
+            subtitle_getter=lambda r: r.default_code or r.barcode,
+        )
+
+        # Purchase Orders
+        add_results(
+            "purchase.order",
+            "Purchase Order",
+            ["|", ("name", "ilike", q), ("partner_id.name", "ilike", q)],
+            subtitle_getter=lambda r: r.partner_id.display_name,
+        )
+
+        # Manufacturing Orders
+        add_results(
+            "mrp.production",
+            "Manufacturing Order",
+            [
+                "|",
+                ("name", "ilike", q),
+                ("product_id.name", "ilike", q),
+            ],
+            subtitle_getter=lambda r: r.product_id.display_name,
         )
 
         return {"results": results}
