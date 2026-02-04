@@ -39,3 +39,5 @@ Google-style global search across multiple models from the systray.
 ## License
 
 MIT License - see [LICENSE](LICENSE)
+
+Adapted from github.com/ffaemy Global Smart Search, original was for v19, and this works with v17.
